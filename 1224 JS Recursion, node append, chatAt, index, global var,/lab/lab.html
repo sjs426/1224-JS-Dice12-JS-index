@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="Result"></p>
+
+    <!--       
+    Houstom, we have a problem   
+    -->
+
+    <script>
+        let I_data = window.prompt("input data");
+        let I_search = window.prompt("input a char to search");
+
+        let First_R = I_data.indexOf(I_search);
+        let Second_R = I_data.lastIndexOf(I_search);
+        let Third_R = I_data.indexOf(I_search,3); 
+        //method returns -1 if the value is not found.
+
+        console.log(I_data.length);
+
+        document.getElementById("Result").innerHTML = First_R +"<br>"+ Second_R+"<br>"+Third_R;   
+    </script>
+</body>
+</html>

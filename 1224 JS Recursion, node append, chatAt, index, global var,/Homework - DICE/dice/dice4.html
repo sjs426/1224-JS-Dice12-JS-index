@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#"> 
+        <!-- # symbol represents the current page. so refresh -->
+        <input id="rollButton" type="button" value="Roll Dice">
+    </form>
+
+    <img id="die1" src="./die1.png" alt="blank image">
+    <img id="die2" src="./die1.png" alt="blank image">
+    <img id="die3" src="./die1.png" alt="blank image">
+    <img id="die4" src="./die1.png" alt="blank image">
+
+    <script>
+        let die1Image;
+        let die2Image;
+        let die3Image;
+        let die4Image;
+
+        // 밑에 거 없으면 작동안한다. load: occurs when an object has loaded
+        window.addEventListener("load", start);
+
+        // start 라는 method 만들기. function으로 만들 수 있다.
+        // register button listener and get the img elements
+        // click: occurs when the user clicks on an element
+        function start() {
+            var button = document.getElementById("rollButton");
+            button.addEventListener("click", rollDice);
+            die1Image = document.getElementById("die1");
+            die2Image = document.getElementById("die2");
+            die3Image = document.getElementById("die3");
+            die4Image = document.getElementById("die4");
+        } // end function start , id가 하나만 가능한 것은 이럴 때 쓰이기 위해이다.
+
+        // roll the dice
+        function rollDice()
+        {
+            setImage(die1Image);
+            setImage(die2Image);
+            setImage(die3Image);
+            setImage(die4Image);
+        } // end function rollDice
+
+        // set src and alt attributes for a die 
+        function setImage(dieImg)
+        {
+            var dieValue = Math.floor(1 + Math.random() * 6);
+            // change the src attribute to the new pic
+            // 여기서 die1 만 가지고 설정했던 거를 1~6으로 바꿔준다. 
+            // e.g.) 0.9 * 6 = 5.4 + 1 = 6.4 floor => 6, 0.1*6 = 0.6 + 1 = 1.6 floor => 1
+            // "src" 다음에 , 가 있으니까 바꿔주는 것 die1.png => die숫자.png 로  + alt는 안해도 됨.
+            dieImg.setAttribute("src", "die" + dieValue + ".png");
+            dieImg.setAttribute("alt", "die image with" + dieValue + " spots(s)");
+        } // end function setImage
+    </script>
+</body>
+
+</html>
